@@ -1,5 +1,6 @@
 # PostgreSQL TS
 
 ```sh
-npm install pg
+npm i pg
+npm i -D @types/pg
 ```
