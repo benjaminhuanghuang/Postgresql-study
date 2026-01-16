@@ -1,0 +1,57 @@
+1. Create a "geolocation" table with is columns
+geolocation_zip_code_prefix = Type is "INTEGER"
+geolocation_lat = Type is "DOUBLE PRECISION"
+geolocation_lng = Type is "DOUBLE PRECISION"
+geolocation_city = Type is "TEXT"
+geolocation_state = Type is "TEXT"
+
+2. Create a "customers" table with this columns
+customer_id = Type is "TEXT" and it should be "PRIMARY KEY"
+customer_unique_id = Type is "TEXT" and it should be "NOT NULL"
+customer_zip_code_prefix = Type is "INTEGER" and it should be "NOT NULL"
+customer_city = Type is "TEXT" and it should be "NOT NULL"
+customer_state = Type is "TEXT" and it should be "NOT NULL"
+
+3. Create a "orders" table with this columns
+order_id = Type is "TEXT" and it should be "PRIMARY KEY"
+customer_id = Type is "TEXT" and it should be "NOT NULL"
+order_status = Type is "TEXT" and it should be "NOT NULL"
+order_purchase_timestamp = Type is "TEXT" and it should be "NOT NULL",
+order_approved_at = Type is "TEXT",
+order_delivered_carrier_date = Type is "TEXT",
+order_delivered_customer_date = Type is "TEXT",
+order_estimated_delivery_date = Type is "TEXT" and it should be "NOT NULL"
+
+Note that "customer_id" is a foreign key which refers to the "customer_id"
+
+4. Create a "categories" table with these columns:
+- product_category_name = Type is "TEXT" and it should be "NOT NULL"
+- product_category_name_english = Type is "TEXT" and it should be "NOT NULL"
+Note that the PRIMARY KEY is a com
+
+5. Create a "sellers" table with these columns:
+- seller_id = Type is "TEXT" and it should be "PRIMARY KEY"
+- seller_zip_code_prefix = Type is "INTEGER" and it should be "NOT NULL"
+- seller_city = Type is "TEXT" and it should be "NOT NULL"
+- seller_state = Type is "TEXT" and it should be "NOT NULL"
+
+6. Create a "products" table with these columns:
+- product_id = Type is "TEXT" and it should be "PRIMARY KEY"
+- product_category_name = Type is "TEXT"
+- product_name_length = Type is "INTEGER"
+- product_description_length = Type is "INTEGER"
+- product_photos_qty = Type is "SMALLINT"
+- product_weight_g = Type is "INTEGER"
+- product_length_cm = Type is "SMALLINT"
+- product_height_cm = Type is "SMALLINT"
+- product_width_cm = Type is "SMALLINT"
+
+9. Create a "reviews" table with these columns:
+- review_id = Type is "TEXT" and it should be "PRIMARY KEY"
+- order_id = Type is "TEXT" and it should be "NOT NULL"
+- review_score = Type is "SMALLINT" and it should be "NOT NULL"
+- review_comment_title = Type is "TEXT"
+- review_comment_message = Type is "TEXT"
+- review_creation_date = Type is "TEXT" and it should be "NOT NULL"
+- review_answer_timestamp = Type is "TEXT" and it should be "NOT NULL"
+Note that order_id is a foreign key which refers to "order_id" in the "orders" table.
