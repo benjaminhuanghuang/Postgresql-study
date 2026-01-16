@@ -1,6 +1,10 @@
 # SQL Vibe Coding with GitHub Copilot
 
-Install PostgreSQL VS code extension by Microsoft
+## Setup
+
+### Github Copilot
+
+### PostgreSQL VS code extension by Microsoft
 
 ## Create tables
 
@@ -30,6 +34,12 @@ The table name is exactly the same as the csv file name which you can find insid
 
 chat: visualize the schema
 
-## Data anylaize
+## Data analyze
 
-chat: Find the total sales amount for each product category
+chat:
+
+```prompt
+Find the total sales amount for each product category
+List of all products sold by a particular seller
+Average review score per product
+```
