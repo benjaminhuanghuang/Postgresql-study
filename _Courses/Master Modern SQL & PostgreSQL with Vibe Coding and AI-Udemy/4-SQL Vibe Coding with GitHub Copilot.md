@@ -25,3 +25,11 @@ CSV HEADER
 QUOTE '"'
 ESCAPE '"';
 The table name is exactly the same as the csv file name which you can find inside the Database directory at root level
+
+## Visualize the schema
+
+chat: visualize the schema
+
+## Data anylaize
+
+chat: Find the total sales amount for each product category
