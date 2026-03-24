@@ -15,14 +15,17 @@ export const getUsersHandler = async (req: Request, res: Response) => {
 // POST /users
 export const createUserHandler = async (req: Request, res: Response) => {
   try {
-    const { name } = req.body;
+    const { name, email } = req.body;
 
     // basic validation
     if (!name) {
       return res.status(400).json({ message: "Name is required" });
     }
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
 
-    const user = await createUser(name);
+    const user = await createUser(name, email);
     res.status(201).json(user);
   } catch (error) {
     console.error("POST /users error:", error);
