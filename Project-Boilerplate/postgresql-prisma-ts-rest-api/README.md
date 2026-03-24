@@ -1,1 +1,1 @@
-# TypeScript + PostgreSQL + Prisma ORM REST API project
+# TypeScript + PostgreSQL + Prisma REST API project

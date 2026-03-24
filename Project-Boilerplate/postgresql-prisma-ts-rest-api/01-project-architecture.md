@@ -5,8 +5,8 @@
 ```sh
 npm init -y
 
-npm i express cors
-npm i -D typescript @types/node @types/express tsx
+npm i express prisma @prisma/client dotenv
+npm i -D typescript @types/node @types/express
 ```
 
 Node.js v24 supports Typescript
