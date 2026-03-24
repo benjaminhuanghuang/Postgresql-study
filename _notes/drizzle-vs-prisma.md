@@ -7,10 +7,27 @@ Prisma: 更像 ORM 框架，开发体验强、自动化高
 // Drizzle
 // SQL select
 await db.select().from(users);
+const [user] = await db
+  .insert(users)
+  .values({ name: "Ada", email: "ada@test.com" })
+  .returning();
+
+const result = await db.select().from(users).where(eq(users.id, 1));
+const user = result[0];
+await db.delete(users).where(eq(users.id, 1));
 
 // Prisma
 // Operate object
 await prisma.user.findMany();
+const user = await prisma.user.create({
+  data: { name: "Ada", email: "ada@test.com" },
+});
+const user = await prisma.user.findUnique({
+  where: { id: 1 },
+});
+await prisma.user.delete({
+  where: { id: 1 },
+});
 ```
 
 ## Schema
