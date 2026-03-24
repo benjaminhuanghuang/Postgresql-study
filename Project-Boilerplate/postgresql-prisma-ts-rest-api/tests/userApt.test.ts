@@ -14,8 +14,8 @@ describe("User API", () => {
 
   it("GET /users returns all users", async () => {
     const mockUsers = [
-      { id: 1, name: "Ada" },
-      { id: 2, name: "Linus" },
+      { id: 1, name: "Ada", email: "ada@example.com" },
+      { id: 2, name: "Linus", email: "linus@example.com" },
     ];
 
     vi.spyOn(userService, "getUsers").mockResolvedValue(mockUsers);
@@ -28,15 +28,20 @@ describe("User API", () => {
   });
 
   it("POST /users creates a user", async () => {
-    const newUser = { id: 3, name: "Grace" };
+    const newUser = { id: 3, name: "Grace", email: "grace@example.com" };
 
     vi.spyOn(userService, "createUser").mockResolvedValue(newUser);
 
-    const res = await request(app).post("/users").send({ name: "Grace" });
+    const res = await request(app)
+      .post("/users")
+      .send({ name: "Grace", email: "grace@example.com" });
 
     expect(res.status).toBe(201);
     expect(res.body).toEqual(newUser);
-    expect(userService.createUser).toHaveBeenCalledWith("Grace");
+    expect(userService.createUser).toHaveBeenCalledWith(
+      "Grace",
+      "grace@example.com",
+    );
   });
 
   it("POST /users returns 400 if name missing", async () => {
