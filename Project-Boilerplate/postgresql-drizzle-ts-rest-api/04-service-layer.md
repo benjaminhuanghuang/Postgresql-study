@@ -38,3 +38,36 @@ export const createUser = async (req: Request, res: Response) => {
   - Controller → Handles HTTP requests and responses
   - Service → Handles business logic
   - Model → Handles data persistence
+
+## For test
+
+### without service layer
+
+```js
+const fromMock = vi.fn();
+const valuesMock = vi.fn();
+const returningMock = vi.fn();
+
+vi.mock("../src/db", () => ({
+  db: {
+    select: vi.fn(() => ({ from: fromMock })),
+    insert: vi.fn(() => ({ values: valuesMock })),
+  },
+}));
+
+describe("user api", () => {
+  beforeEach(() => {
+    fromMock.mockReset();
+    valuesMock.mockReset();
+    returningMock.mockReset();
+  });
+});
+```
+
+## with service layer
+
+```js
+import * as userService from "../src/services/user.service";
+
+vi.mock("../src/services/user.service");
+```

@@ -1,56 +1,48 @@
 import request from "supertest";
-import { beforeEach, describe, expect, it, vi } from "vitest";
-import { users } from "../src/db/schema";
-
-const selectMock = vi.fn();
-const insertMock = vi.fn();
-
-vi.mock("../src/db", () => ({
-  db: {
-    select: selectMock,
-    insert: insertMock,
-  },
-}));
-
+import { describe, it, expect, vi, beforeEach } from "vitest";
 import app from "../src/app";
 
-describe("user api", () => {
+// Mock the entire service module
+import * as userService from "../src/services/user.service";
+
+vi.mock("../src/services/user.service");
+
+describe("User API", () => {
   beforeEach(() => {
-    selectMock.mockReset();
-    insertMock.mockReset();
+    vi.clearAllMocks();
   });
 
   it("GET /users returns all users", async () => {
-    const allUsers = [
+    const mockUsers = [
       { id: 1, name: "Ada" },
       { id: 2, name: "Linus" },
     ];
-    const fromMock = vi.fn().mockResolvedValue(allUsers);
 
-    selectMock.mockReturnValue({ from: fromMock });
+    vi.spyOn(userService, "getUsers").mockResolvedValue(mockUsers);
 
-    const response = await request(app).get("/users");
+    const res = await request(app).get("/users");
 
-    expect(response.status).toBe(200);
-    expect(response.body).toEqual(allUsers);
-    expect(selectMock).toHaveBeenCalledTimes(1);
-    expect(fromMock).toHaveBeenCalledWith(users);
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual(mockUsers);
+    expect(userService.getUsers).toHaveBeenCalledTimes(1);
   });
 
   it("POST /users creates a user", async () => {
-    const createdUsers = [{ id: 3, name: "Grace" }];
-    const returningMock = vi.fn().mockResolvedValue(createdUsers);
-    const valuesMock = vi.fn().mockReturnValue({ returning: returningMock });
+    const newUser = { id: 3, name: "Grace" };
 
-    insertMock.mockReturnValue({ values: valuesMock });
+    vi.spyOn(userService, "createUser").mockResolvedValue(newUser);
 
-    const response = await request(app).post("/users").send({ name: "Grace" });
+    const res = await request(app).post("/users").send({ name: "Grace" });
 
-    expect(response.status).toBe(201);
-    expect(response.body).toEqual(createdUsers);
-    expect(insertMock).toHaveBeenCalledTimes(1);
-    expect(insertMock).toHaveBeenCalledWith(users);
-    expect(valuesMock).toHaveBeenCalledWith({ name: "Grace" });
-    expect(returningMock).toHaveBeenCalledTimes(1);
+    expect(res.status).toBe(201);
+    expect(res.body).toEqual(newUser);
+    expect(userService.createUser).toHaveBeenCalledWith("Grace");
+  });
+
+  it("POST /users returns 400 if name missing", async () => {
+    const res = await request(app).post("/users").send({});
+
+    expect(res.status).toBe(400);
+    expect(res.body).toEqual({ message: "Name is required" });
   });
 });
