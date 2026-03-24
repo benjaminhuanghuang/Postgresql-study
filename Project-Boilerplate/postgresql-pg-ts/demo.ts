@@ -1,4 +1,4 @@
-import { Pool } from "pg";
+import { Pool } from "./node_modules/@types/pg";
 
 // Create a pool of connections
 const pool = new Pool({
@@ -25,7 +25,7 @@ async function main() {
     // Insert a row
     const insertResult = await client.query(
       "INSERT INTO users (username) VALUES ($1) RETURNING *",
-      ["Alice"]
+      ["Alice"],
     );
     console.log("Inserted user:", insertResult.rows[0]);
 
