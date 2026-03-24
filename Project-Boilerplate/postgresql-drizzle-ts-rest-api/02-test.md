@@ -3,7 +3,7 @@
 ## Setup
 
 ```sh
-npm i -D vitest supertest @types/supertest mongodb-memory-server
+npm i -D vitest supertest @types/supertest
 ```
 
 supertest lets tests call your Express endpoints directly (GET /api/users, POST /api/users, etc.) and assert status/body, without manually starting a real HTTP server.
