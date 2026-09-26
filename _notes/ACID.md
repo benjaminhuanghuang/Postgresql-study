@@ -1,4 +1,4 @@
-# ACID
+# ACID(Atomicity, Consistency, Isolation, Durability)
 
 1. Atomicity
 
