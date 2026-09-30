@@ -8,6 +8,8 @@ https://sql.holt.courses/
 
 [PostgreSQL 14 Docker image](https://hub.docker.com/r/btholt/complete-intro-to-sql)
 
+[Download](https://www.0daydown.com/09/1950325.html)
+
 [to learn]
 
 ## Table of content
