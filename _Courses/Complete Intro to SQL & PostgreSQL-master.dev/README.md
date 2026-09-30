@@ -6,9 +6,11 @@ https://master.dev/courses/sql/
 
 https://sql.holt.courses/
 
-## Table of content
+[PostgreSQL 14 Docker image](https://hub.docker.com/r/btholt/complete-intro-to-sql)
 
-Here is the table of contents for the [Complete Intro to SQL & PostgreSQL](https://master.dev/courses/sql/) course:
+[to learn]
+
+## Table of content
 
 ### Introduction (20 minutes)
 
