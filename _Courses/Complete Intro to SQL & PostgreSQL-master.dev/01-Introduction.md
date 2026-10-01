@@ -11,6 +11,7 @@ docker pull btholt/complete-intro-to-sql
 docker run -e POSTGRES_PASSWORD=lol --name=pg --rm -d -p 5432:5432 btholt/complete-intro-to-sql
 
 docker exec -u postgres -it pg psql
+docker exec -u postgres -it sql psql omdb
 ```
 
 -e POSTGRES_PASSWORD=lol Set the PostgreSQL user's password to lol

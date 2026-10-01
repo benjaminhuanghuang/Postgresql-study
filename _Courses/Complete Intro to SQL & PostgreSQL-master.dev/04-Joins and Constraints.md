@@ -6,6 +6,13 @@
 
 ## Natural & Cross Joins
 
+```sql
+SELECT r.title, r.body, rp.url
+  FROM recipes_photos rp
+  CROSS JOIN
+    recipes r;
+```
+
 ## Foreign Keys & Managing References
 
 ## Many-to-Many Relationships
