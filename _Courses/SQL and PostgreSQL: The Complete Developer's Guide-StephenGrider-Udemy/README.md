@@ -1,6 +1,9 @@
 # SQL and PostgreSQL: The Complete Developer's Guide
 
+Become an expert with SQL and PostgreSQL! Store and fetch data, tune queries, and design efficient database structures!
+
 by Stephen Grider
+
 https://www.udemy.com/course/sql-and-postgresql
 
 https://www.bilibili.com/video/BV1DQ4y1z79B
