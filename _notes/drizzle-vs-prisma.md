@@ -1,7 +1,16 @@
 # Drizzle vs Prisma
 
-Drizzle: 更接近 SQL，更快, 轻量、可控
-Prisma: 更像 ORM 框架，开发体验强、自动化高
+Drizzle: 更接近 SQL，更快, 轻量、可控, Use typescript, 方便与现有 TypeScript 代码结合
+Prisma: 更像 ORM 框架，开发体验强、自动化高, Schema 更集中、易读
+
+| 对比       | Prisma         | Drizzle                       |
+| ---------- | -------------- | ----------------------------- |
+| 定义文件   | schema.prisma  | TypeScript 文件               |
+| 定义方式   | 声明式 Schema  | 函数式 API                    |
+| 字段映射   | @map()         | text("column_name") 等        |
+| 表名映射   | @@map()        | pgTable("users", ...)         |
+| 金额类型   | Decimal        | 通常是 numeric() 返回的字符串 |
+| 数据库迁移 | Prisma Migrate | Drizzle Kit                   |
 
 ```js
 // Drizzle
